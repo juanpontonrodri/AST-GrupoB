@@ -6,6 +6,8 @@ _NO REALIZAR NPM UPDATE_
 Versiones recomendadas node:18.12 angular:15.2 npm :npm install -g npm@9.5.1
 
 Falta:
+-Mensajes de confirmacion
+-Buscar por id y nombre
 -Al poner añadir q desaparaezca los demas
 -Definir si todos los cmapos son obligatorios (SI CONSEGUIMOS HACER Q NO SEAN OBLIGATORIOS HAY Q ELMINAR EL CAMPO DE NINGUN TIPO EN EL SEGUNDO TIPO POKEMON) y si hay algo por defecto(mirar proyecto q piden)
 -La opcion de modificar
@@ -18,3 +20,16 @@ Al cambiar esto el css se pasa de tamaño asi q o se divide en varios o se quita
 Direccion para hacer post y get: http://localhost:3000/api/pokemon
 
 Comando para desactivar hyper-v y activar avx en windows: bcdedit/set xsavedisable 0
+
+IMPLMENTAR ESTO:
+pokemon.route('/pokemon')
+    .get(pokemonroute.findAllpokemon) // Devuelve todos los pokemon.
+    .post(pokemonroute.addpokemon); // Agrega un nuevo pokemon.
+
+pokemon.route('/pokemon/nombre/:nombre')
+    .get(pokemonroute.findByName) // Devuelve un pokemon por su nombre.
+
+pokemon.route('/pokemon/id/:id')
+    .get(pokemonroute.findById) // Devuelve un pokemon por su ID.
+    .put(pokemonroute.updatepokemon) // Actualiza un pokemon existente.
+    .delete(pokemonroute.deletePokemon); // Elimina un pokemon existente.

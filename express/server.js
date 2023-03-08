@@ -66,6 +66,10 @@ pokemon.route('/pokemon')
 
 
 
+pokemon.route('/pokemon/:nombre')
+    .get(pokemonroute.findByName)
+
+
 pokemon.route('/pokemon/:id')
     .get(pokemonroute.findById) // Devuelve un pokemon por su ID.
     .put(pokemonroute.updatepokemon) // Actualiza un pokemon existente.

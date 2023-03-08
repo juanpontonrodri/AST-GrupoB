@@ -5,7 +5,7 @@ var Pokemon = mongoose.model("pokemon");
 //GET - Return all pokemon in the DB
 exports.findAllpokemon = function (req, res) {
   Pokemon.find(function (err, pokemon) {
-    if (err) res.send(500, err.message);
+    if (err) res.status(500, err.message);
 
     console.log("GET /pokemon");
     res.status(200).jsonp(pokemon);
@@ -14,12 +14,22 @@ exports.findAllpokemon = function (req, res) {
 //GET - Return a pokemon with specified ID
 exports.findById = function (req, res) {
   Pokemon.findById(req.params.id, function (err, pokemon) {
-    if (err) return res.send(500, err.message);
+    if (err) return res.status(500, err.message);
 
     console.log('GET /pokemon/' + req.params.id);
     res.status(200).jsonp(pokemon);
   });
 };
+//GET Return pokemon by name
+exports.findByName = function (req, res) {
+  var nombre = req.params.nombre;
+  Pokemon.find({ nombre: nombre }, (err, pokemon) => {
+    if (err) return res.status(500, err.message);
+    console.log('GET /pokemon/' + req.params.nombre);
+    res.status(200).jsonp(pokemon);
+  })
+}
+
 
 //POST - Insert new pokemon(s) in the DB
 exports.addpokemon = function (req, res) {
