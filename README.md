@@ -1,4 +1,7 @@
 Cargar pokemons en base de datos: node cargarBD.js
+Para arrancar angular hacer npm install dentro de client y despues ng serve
+Para arrancar express npm run DevStart
+
 _NO REALIZAR NPM UPDATE_
 Versiones recomendadas node:18.12 angular:15.2 npm :npm install -g npm@9.5.1
 
