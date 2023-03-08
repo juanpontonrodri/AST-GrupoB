@@ -21,7 +21,7 @@ export class PokemonService {
     return this.webService.post('api/pokemon', { nombre, numero, generacion, region, tipo, evolucion, legendario, cantidad, precio })
   }
   deletePokemon(_id: string) {
-    return this.webService.delete(`api/pokemon/${_id}`);
+    return this.webService.delete(`api/pokemon/id/${_id}`);
   }
 
 }

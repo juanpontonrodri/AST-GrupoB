@@ -1,6 +1,6 @@
 // Requerimos el paquete mongoose para conectarnos a una base de datos MongoDB.
 const mongoose = require("mongoose");
-const Pokemon = require("./models/pokemon");
+//const Pokemon = require("./models/pokemon");
 
 
 // Configuramos la opción "strictQuery" de mongoose para que sea más estricto en el manejo de las consultas a la base de datos.
@@ -57,26 +57,20 @@ router.get("/", function (req, res) {
 // Agregamos la ruta definida anteriormente a nuestra aplicación.
 app.use(router);
 
-// Definimos las rutas de nuestra API para los recursos "pokemon".
-var pokemon = express.Router();
-
-pokemon.route('/pokemon')
+router.route('/pokemon')
     .get(pokemonroute.findAllpokemon) // Devuelve todos los pokemon.
     .post(pokemonroute.addpokemon); // Agrega un nuevo pokemon.
 
+router.route('/pokemon/nombre/:nombre')
+    .get(pokemonroute.findByName) // Devuelve un pokemon por su nombre.
 
-
-pokemon.route('/pokemon/:nombre')
-    .get(pokemonroute.findByName)
-
-
-pokemon.route('/pokemon/:id')
+router.route('/pokemon/id/:id')
     .get(pokemonroute.findById) // Devuelve un pokemon por su ID.
     .put(pokemonroute.updatepokemon) // Actualiza un pokemon existente.
     .delete(pokemonroute.deletePokemon); // Elimina un pokemon existente.
 
 // Agregamos las rutas definidas anteriormente a nuestra aplicación.
-app.use('/api', pokemon);
+app.use('/api', router);
 
 // Iniciamos el servidor y escuchamos en el puerto definido anteriormente.
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));

@@ -16,7 +16,7 @@ exports.findById = function (req, res) {
   Pokemon.findById(req.params.id, function (err, pokemon) {
     if (err) return res.status(500, err.message);
 
-    console.log('GET /pokemon/' + req.params.id);
+    console.log('GET /pokemon/id/' + req.params.id);
     res.status(200).jsonp(pokemon);
   });
 };
@@ -25,7 +25,7 @@ exports.findByName = function (req, res) {
   var nombre = req.params.nombre;
   Pokemon.find({ nombre: nombre }, (err, pokemon) => {
     if (err) return res.status(500, err.message);
-    console.log('GET /pokemon/' + req.params.nombre);
+    console.log('GET /pokemon/nombre/' + req.params.nombre);
     res.status(200).jsonp(pokemon);
   })
 }
