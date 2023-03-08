@@ -1,4 +1,6 @@
 Cargar pokemons en base de datos: node cargarBD.js
+_NO REALIZAR NPM UPDATE_
+Versiones recomendadas node:18.12 angular:15.2 npm :npm install -g npm@9.5.1
 
 Falta:
 -Al poner añadir q desaparaezca los demas
